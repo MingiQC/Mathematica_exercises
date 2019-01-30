@@ -1,0 +1,49 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[left=1cm,right=1cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{kotex}
+\newcommand{\mean}[1]{\left\langle #1 \right\rangle }
+\usepackage[onehalfspacing]{setspace}
+\usepackage{imakeidx}
+\makeindex
+\begin{document}
+\paragraph{Usefull Identities for General Relativity}
+ $$\mbox{Note that }\quad\partial_v F^{k}\equiv{F^k}_{,v}$$
+\subparagraph{Connection coefficient or Christoffel symbol}
+	$$\Gamma^{\mu}_{\lambda\nu}=\frac{1}{2}g^{\mu\kappa}\left(g_{\kappa\lambda,\nu}+g_{\kappa\nu,\lambda}-g_{\lambda\nu,\kappa} \right) $$
+	Note that Christoffel symbol is not a tensor!\\
+	Christoffel symbol은 basis vector 를 미분할 때 튀어나온다.
+	$$\mathbf{e}_{m,i}=\Gamma^{k}_{mi}\mathbf{e}_k$$
+\subparagraph{Inner product of basis vector and basis one-form}
+	$$\mean{\mathbf{e_\nu},\mathbf{\theta^\mu}}={\delta^\mu}_\nu$$
+	vector 와 one-form 은 서로 dual 이다. dual: inner product를 하면 scalar가 나옴 (ex. bra \& ket vector, complex number와 그것의 complex conjugate 등등..)
+\subparagraph{Covariant derivative of vector}
+$$\mathcal{D}_\mu V^\kappa = {V^\kappa}_{;\mu}=\partial_\mu V^\kappa +\Gamma^\kappa_{\mu\lambda}V^\lambda={V^\kappa}_{,\mu} +\Gamma^\kappa_{\mu\lambda}V^\lambda$$
+$$\mathcal{D}_\mu V_\kappa = {V_\kappa}_{;\mu}=\partial_\mu V_\kappa -\Gamma^\lambda_{\mu\kappa}V_\lambda={V_\kappa}_{,\mu} -\Gamma^\lambda_{\mu\kappa}V_\lambda$$
+Covariant: 좌표가 변해도 형태가 변하지 않음, Covariant derivative는 tensor 임\\
+$\Gamma^a_{bc}$ : Connection coefficient 또는 Christoffel symbol (The term `connection coefficient' comes about because this quantity connects the value of a vector field at one point with the value at another. It amounts to an additional structure possessed by the space.)\\
+index 가 2개일 때
+$${V^{mn}}_{;s}={V^{mn}}_{,s}+\Gamma^m_{st}V^{tn}+\Gamma^n_{st}V^{tm}$$
+$${V_{mn}}_{;s}={V_{mn}}_{,s}-\Gamma^t_{sm}V_{tn}-\Gamma^t_{sn}V_{tm}$$
+Covariant derivative of vector $\vec{V}=V^{\mu}\mathbf{e_\mu}$
+$$\nabla \vec{V}=\left(\nabla_i \vec{V} \right)\mathbf{\theta}^i=\left({V^m}_{,i}\mathbf{e}_m+{V^m}\mathbf{e}_{m,i} \right)\theta^i  $$
+$$=\left({V^m}_{,i}\mathbf{e}_m+{V^m}\Gamma^{k}_{mi}\mathbf{e}_k \right)\theta^i$$
+$$=\left({V^k}_{,i}\mathbf{e}_k+{V^m}\Gamma^{k}_{mi}\mathbf{e}_k \right)\theta^i$$
+$$=\left({V^k}_{,i}+\Gamma^{k}_{mi}{V^m} \right)\mathbf{e}_k\otimes\theta^i=\left({V^k}_{;i} \right)\theta^i\otimes\mathbf{e}_k$$
+Basis one-form 들을 $dx^i$ 라 하면,
+$$\nabla \vec{V}={V^k}_{;i}dx^i\otimes\mathbf{e}_{k}$$
+$\vec{U}=U^{\mu}\mathbf{e}_\mu$ 방향의 absolute derivative 는 둘의 inner product를 취하면 된다.
+$$\nabla_\mathbf{U}\vec{V}=\mean{\nabla\vec{V},\vec{U}}=\mean{{V^\kappa}_{;\lambda}dx^{\lambda}\otimes\mathbf{e}_\kappa, U^\nu\mathbf{e}_\nu}={V^\kappa}_{;\lambda} U^\nu\mean{dx^{\lambda}\otimes\mathbf{e}_\kappa,\mathbf{e}_\nu}$$
+$$={V^\kappa}_{;\lambda} U^\nu\mean{dx^{\lambda}\otimes\mathbf{e}_\kappa,\mathbf{e}_\nu}={V^\kappa}_{;\lambda} U^\nu\mean{dx^{\lambda},\mathbf{e}_\nu}\otimes\mathbf{e}_\kappa$$
+$$={V^\kappa}_{;\lambda} U^\nu{\delta^\lambda}_{\nu}\mathbf{e}_\kappa={V^\kappa}_{;\lambda}U^\lambda\mathbf{e}_\kappa$$
+\subparagraph{Geodesic equation}
+$$\frac{d^2x^\mu}{ds^2}+\Gamma^\mu_{\nu\rho}\frac{dx^\nu}{ds}\frac{dx^\rho}{ds}=0$$
+In geodesic coordinate, $g_{\mu\nu,\kappa}=0, \Gamma^{\mu}_{\nu\kappa}=0$
+\subparagraph{Connection one-form}
+$${\omega^\lambda}_{\nu}=\Gamma^{\lambda}_{\nu\mu}\theta^{\mu}$$
+\subparagraph{Curvature two-form}
+$${\Omega^\mu}_{\nu}=\mathbf{d}{\omega^\mu}_{\nu}+{\omega^\mu}_\lambda\wedge{\omega^\lambda}_\nu$$
+\end{document}
