@@ -1,0 +1,67 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[left=1cm,right=1cm,top=3cm,bottom=3cm,a4paper]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{kotex}
+\newcommand{\Maxwell}[3][]{\left.\frac{\partial #2}{\partial #3} \right)_{#1} }
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+\newcommand{\mean}[1]{\left\langle #1 \right\rangle }
+\newcommand{\lie}[2][]{[\![#1 #2]\!]}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{imakeidx}
+\begin{document}
+	\paragraph{Group element가 항상 unitary representation을 가질 수 있을까?}
+	Finite group (ex. $S_4,Z_3,\cdots$) 의 경우 우리가 항상 unitary인 representation을 고를 수 있다. $\rightarrow$\\
+	Finite group G의 원소인 g에 대한 Non-unitary representation를  $\tilde{D}(g)$ 라고 하자. 이제 다음과 같은 quantity를 정의할 수 있고,
+	$$H=\sum_{g}\tilde{D}(g)^\dagger\tilde{D}(g)$$
+	$H$ 는 주어진 representation에 의한 unitary transformation에 대해 invariant하다.
+	$$\tilde{D}(g')^\dagger H\tilde{D}(g')=\sum\tilde{D}(g')^\dagger\tilde{D}(g)^\dagger\tilde{D}(g)\tilde{D}(g')=\sum_{g''}\tilde{D}(g'')^\dagger\tilde{D}(g'')=H$$
+	한편, $H$는 hermitian이기 때문에 어떤 unitary matrix $W$에 의한 unitary transformation으로 diagonalize 될 수 있다. 또한 $M^\dagger M$ 이 항상 양의 eigenvalue를 갖기 때문에 ($M\psi=\rho\psi$ 일 때,$\quad \left(\psi,M^\dagger M\psi \right)=\left(M\psi, M\psi \right)=\left(\rho\psi,\rho\psi \right)=\left|\rho \right|^2  $, 따라서 $M^\dagger M\psi=\left|\rho \right|^2\psi$ ) $H$ 는 항상 양의 eigenvalue로 이루어진 diagonal matrix $\rho^2$을 갖는다.
+	$$\rho^2=W^\dagger H W$$ 
+	마지막으로 $D(g)$ 를 다음과 같이 다시 정의하면 비로소 finite group에 대한 unitary representation을 얻어낼 수 있다. 
+	$$D(g)=\rho W^\dagger \tilde{D}(g)W\rho^{-1}$$ 
+	$$D^\dagger D=\rho^{-1}W^\dagger\tilde{D}^\dagger W\rho\rho W^\dagger\tilde{D}W\rho^{-1}=\rho^{-1}W^\dagger\tilde{D}^\dagger H\tilde{D}W\rho^{-1}=\rho^{-1}\rho^2\rho^{-1}=I$$
+	그러나, continuous group에 대해서는 이들이 unitary representation을 언제나 갖는다고 섣불리 단정할 수 없다. 오직 작은 element 요소들에 대한 적분인 $\int d\mu(g)(\cdots)$ 이 converge할 때만(즉, group이 compact할 때) continuous group의  element에 대한 unitary representation을 고를 수 있다. 
+	
+	\paragraph{Lie Group 의 특징}
+	\subparagraph{Group?}
+	$$\mbox{associativity, }\quad\exists \mathbb{I},\quad\exists g^{-1} $$
+	$\bullet$ Group element $G$를 어떤 parameter $\theta_1,\theta_2,\cdots,\theta_a$에 관한 함수 $T(\theta_a)$ 로 나타낼 수 있다.\\
+	$\bullet$ Identity $\mathbb{I}=T(0)$ 이 존재한다.\\
+	$\bullet$ 두 group element인 $T(\theta_1),\,T(\theta_2)$ 에 대해 이들의 product를 다음과 같이 나타낼 수 있다.
+	$$T(\theta_1)\cdot T(\theta_2)=T(f(\theta_1,\theta_2))$$ 
+	이때 $f(\theta_1,\theta_2)$ 가 주어진 Lie group 의 성질을 결정한다. 이제 위에서 보인 Lie group의 세 가지 성질들을 이용해서 $f^a(\theta_1,\theta_2)$ 의 Taylor expansion을 엿볼 수 있다. 다음 식을 보자.
+	$$T(\theta)\cdot T(\phi)=T(f^a(\theta,\phi))$$
+	위 식에서 $\theta$ 나 $\phi$ 가 0 이라면 identity 조건에 의해,
+	$$T(\theta)\cdot T(0)=T(\theta)\cdot \mathbb{I}=T(\theta)=T(f(\theta,0)),\quad f^a(\theta,0)=\theta$$
+	$$T(0)\cdot T(\phi)=\mathbb{I} \cdot T(\phi)=T(\phi)=T(f(0,\phi)),\quad f^a(0,\phi)=\phi$$  
+	이고, $f^a(\theta,\phi)$ 의 일반적인 Taylor expansion은 다음과 같으므로,
+	$$f^a(\theta,\phi)=\theta+\phi+(\sim)(\theta^2+\phi^2+\theta\phi)+(\sim)(\theta^3+\phi^3+\theta^2\phi+\theta\phi^2)+\cdots$$
+	위의 조건에 의해 혼자 돌아다니는 항들은 전부 제거하면,
+	$$f^a(\theta,\phi)=\theta^a+\phi^a+{{f^a}_{bc}}\theta^b\phi^c+\cdots$$	
+	의 꼴로 나타낼 수 있다. 뿐만아니라, $T(\theta)$ 의 unitary representation $U(T(\theta))$ 도 identity 근처에서 taylor series로 전개할 수 있는데,
+	$$U(T(\theta))=1+i\theta^a T_{a}+\frac{1}{2}\theta^b\theta^cT_{bc}+\cdots$$
+	이를 이용해서 이차항 $T_{bc}$ 를 generator $T_b, T_c$ 와 ${f^a}_{bc}$ 로 계산할 수 있다.
+	$$U(T(\theta))U(T(\phi))=U(T(f^a(\theta,\phi)))$$  
+	$$(1+i\theta^aT_a+\frac{1}{2}\theta^b\theta^cT_{bc}+\cdots)(1+i\phi^aT_a+\frac{1}{2}\phi^b\phi^cT_{bc}+\cdots)$$
+	$$=(1+i(\theta^a+\phi^a+{f^a}_{bc}\theta^b\phi^c+\cdots)T_a+\frac{1}{2}(\theta^b+\phi^b+\cdots)(\theta^c+\phi^c+\cdots)T_{bc}+\cdots)$$
+	좌변을 전개해서 우변과 비교해보자. $\theta,\phi$의 order대로 정리하면,
+	$$\mbox{(좌변) }1+i\theta^a T_a+i\phi^a T_a+\frac{1}{2}\theta^b\theta^cT_{bc}+\frac{1}{2}\phi^b\phi^cT_{bc}-\theta^a\phi^bT_aT_b+\cdots$$
+	$$\mbox{(우변) }1+i(\theta^a+\phi^a)T_a+\frac{1}{2}(\theta^b\theta^c+\phi^b\phi^c+\theta^b\phi^c+\theta^c\phi^b)T_{bc}+i{f^a}_{bc}\theta^b\phi^cT_{a}+\cdots$$
+	차수대로 정리하면,
+	$$-\theta^b\phi^cT_bT_c=\frac{1}{2}\theta^b\phi^c(T_{bc}+T_{cb})+\theta^b\phi^c(i{f^a}_{bc}T_a)$$
+	한편, $U$를 $\theta^b$로 먼저 미분하고 $\theta^c$로 미분하든, 거꾸로하든 결과는 같으므로 $T_{bc}=T_{cb}$이고,
+	$$T_{bc}=-T_{b}T_{c}-i{f^a}_{bc}T_a$$
+	$$T_{cb}=-T_{c}T_{b}-i{f^a}_{cb}T_a$$
+	$T_b$ 와 $T_c$ 의 commutator $\left[T_b,T_c\right]$ 는
+	$$\left[T_b,T_c\right]=T_bT_c-T_cT_b=(-T_{bc}-i{f^a}_{bc}T_a)-(-T_{cb}-i{f^a}_{cb}T_a)=i({f^a}_{cb}-{f^a}_{bc})T_a=i{C^a}_{bc}T_a$$
+	이때 위와 같은 commuatation relation을 Lie algebra라고 하고 ${C^a}_{bc}$ 를 Lie algebra의 structure constant라고 한다. 
+	\subparagraph{Lie Algebra?}
+	$$\lie{g_a,g_b}=i{f^a}_{bc}g_a$$
+	Lie bracket에 두 generator를 넣으면 generator들의 선형결합을 준다. Lie algebra는 다음의 세 조건을 만족한다. 
+	$$\mbox{Linearity }\quad\lie{a_1v_1+a_2v_2,w}=a_1\lie{v_1,w}+a_2\lie{v_2,w}$$
+	$$\mbox{Antisymmetry }\quad \lie{v,w}=-\lie{w,v}$$
+	$$\mbox{Jacobi Identity}\quad \lie{\lie{a,b},c}+\lie{\lie{b,c},a}+\lie{\lie{c,a},b}=0$$
+\end{document}
